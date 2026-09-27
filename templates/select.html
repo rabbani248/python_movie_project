@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Select Movie{% endblock %}
+
+{% block content %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <h1 class="heading">Select Movie</h1>
+    {% for movie in movies : %}
+
+
+<form action="{{ url_for('persist') }}" method="post" >
+
+    <input type="hidden" name="title" value="{{ movie['title'] }}">
+    <input type="hidden" name="year" value="{{ movie['year'] }}">
+    <input type="hidden" name="description" value="{{ movie['description'] }}">
+    <input type="hidden" name="rating" value="{{ movie['rating'] }}">
+    <input type="hidden" name="popularity" value="{{ movie['popularity'] }}">
+    <input type="hidden" name="image_url" value="{{ movie['image_url'] }}">
+
+    <button type="submit">
+        {{ movie["title"] }} - {{ movie["year"] }}
+    </button>
+
+</form>
+
+{% endfor %}
+
+
+
+
+
+
+</div>
+{% endblock %}
